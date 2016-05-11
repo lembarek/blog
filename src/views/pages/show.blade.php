@@ -6,8 +6,14 @@
 
 @section('content')
 
-    <div class="body">
-        {{ $page->body }}
+    <div class="page">
+        <h1>{{ $page['title'] }}</h1>
+
+        <h3>{{$page['description'] }} </h3>
+
+        <div class="body">
+            {{ $page->body }}
+        </div>
     </div>
 
 @stop

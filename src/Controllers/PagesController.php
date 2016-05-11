@@ -15,6 +15,17 @@ class PagesController extends Controller
     }
 
     /**
+     * show all pages
+     *
+     * @return Response
+     */
+    public function pages()
+    {
+        $pages = $this->pageRepo->getPopular(10);
+        return view('blog::pages.pages', compact('pages'));
+    }
+
+    /**
      * show a pages
      *
      * @param  string  $slug

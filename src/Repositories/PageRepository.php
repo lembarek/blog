@@ -14,4 +14,15 @@ class PageRepository extends Repository implements PageRepositoryInterface
         $this->model = $model;
     }
 
+    /**
+     * get popular pages
+     *
+     * @param  integer  $limit
+     * @return Page
+     */
+    public function getPopular($limit=20)
+    {
+        return $this->model->latest()->limit($limit)->get();
+    }
+
 }
