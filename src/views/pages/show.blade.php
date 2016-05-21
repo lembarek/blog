@@ -1,19 +1,25 @@
 @extends('blog::layout.master')
 
 @section('title')
-    {{ $page->title }}
+    {{ $page['title'] }}
 @stop
 
 @section('content')
 
-    <div class="page">
-        <h1>{{ $page['title'] }}</h1>
+    <div class="container">
+      <div class="blog-header">
+        <h1 class="blog-title">{{ $page['title'] }}</h1>
+        <p class="lead blog-description">{{$page['description'] }} </p>
+      </div>
 
-        <h3>{{$page['description'] }} </h3>
+      <div class="row">
 
-        <div class="body">
-            {{ $page->body }}
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+                {{ $page['body'] }}
+          </div>
         </div>
+      </div>
     </div>
 
 @stop
