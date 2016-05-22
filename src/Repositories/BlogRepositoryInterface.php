@@ -3,7 +3,7 @@
 namespace Lembarek\Blog\Repositories;
 
 
-Interface PageRepositoryInterface
+Interface BlogRepositoryInterface
 {
 
 }

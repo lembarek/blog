@@ -4,7 +4,7 @@ namespace Lembarek\Blog\Repositories;
 
 use Lembarek\Blog\Models\Page;
 
-class PageRepository extends Repository implements PageRepositoryInterface
+class BlogRepository extends Repository implements BlogRepositoryInterface
 {
 
     protected $model;

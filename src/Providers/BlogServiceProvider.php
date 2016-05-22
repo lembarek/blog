@@ -25,5 +25,10 @@ class BlogServiceProvider extends ServiceProvider
      */
     public function register()
     {
+         $this->app->bind(
+             'Lembarek\Blog\Repositories\BlogRepositoryInterface',
+             'Lembarek\Blog\Repositories\BlogRepository'
+         );
+
     }
 }
