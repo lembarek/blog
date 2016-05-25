@@ -2,7 +2,7 @@
 
 namespace Lembarek\Blog\Models;
 
-class Page extends Model
+class Blog extends Model
 {
 
 }

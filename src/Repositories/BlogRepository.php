@@ -2,14 +2,14 @@
 
 namespace Lembarek\Blog\Repositories;
 
-use Lembarek\Blog\Models\Page;
+use Lembarek\Blog\Models\Blog;
 
 class BlogRepository extends Repository implements BlogRepositoryInterface
 {
 
     protected $model;
 
-    public function __construct(Page $model)
+    public function __construct(Blog $model)
     {
         $this->model = $model;
     }
@@ -18,7 +18,7 @@ class BlogRepository extends Repository implements BlogRepositoryInterface
      * get popular pages
      *
      * @param  integer  $limit
-     * @return Page
+     * @return Blog
      */
     public function getPopular($limit=20)
     {
