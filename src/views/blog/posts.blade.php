@@ -5,11 +5,11 @@
 @stop
 
 @section('content')
-    <div class="blogs">
-        @foreach($blogs as $blog)
-            <div class="blog">
-                <a href="{{route('blog::show_blog', [$blog->slug]) }}">{{ $blog['title'] }}</a>
-                <p>{{ substr($blog['body'], 0, 80) }}...</p>
+    <div class="posts">
+        @foreach($posts as $post)
+            <div class="post">
+                <a href="{{ route('blog::show_post', [$post->slug]) }}">{{ $post['title'] }}</a>
+                <p>{{ substr($post['body'], 0, 80) }}...</p>
             </div>
         @endforeach
     </div>

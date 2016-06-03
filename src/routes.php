@@ -8,7 +8,7 @@ Route::group(['as' => 'blog::', 'middleware' => ['web']], function () {
         ]);
 
     Route::get('/blog/{slug}', [
-        'as' => 'show_blog',
+        'as' => 'show_post',
         'uses' => 'Lembarek\Blog\Controllers\BlogsController@show',
         ]);
 

@@ -33,7 +33,7 @@ class BlogsController extends Controller
      */
     public function show($slug)
     {
-        $post =  $this->blogRepo->getBySlug($post);
+        $post =  $this->blogRepo->getBySlug($slug);
         return view('blog::blog.show',compact('post'));
     }
 
