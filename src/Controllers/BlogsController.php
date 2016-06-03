@@ -19,10 +19,10 @@ class BlogsController extends Controller
      *
      * @return Response
      */
-    public function blogs()
+    public function posts()
     {
-        $blogs = $this->blogRepo->getPopular(10);
-        return view('blog::blogs.blogs', compact('blogs'));
+        $posts = $this->blogRepo->getPopular(10);
+        return view('blog::blog.posts', compact('posts'));
     }
 
     /**
@@ -33,8 +33,8 @@ class BlogsController extends Controller
      */
     public function show($slug)
     {
-        $blog =  $this->blogRepo->getBySlug($slug);
-        return view('blog::blogs.show',compact('blog'));
+        $post =  $this->blogRepo->getBySlug($post);
+        return view('blog::blog.show',compact('post'));
     }
 
 }

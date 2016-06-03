@@ -2,9 +2,9 @@
 
 Route::group(['as' => 'blog::', 'middleware' => ['web']], function () {
 
-    Route::get('/blogs', [
-        'as' => 'blogs',
-        'uses' => 'Lembarek\Blog\Controllers\BlogsController@blogs',
+    Route::get('/posts', [
+        'as' => 'posts',
+        'uses' => 'Lembarek\Blog\Controllers\BlogsController@posts',
         ]);
 
     Route::get('/blog/{slug}', [
