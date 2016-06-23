@@ -19,6 +19,7 @@ class CreateBlogsTable extends Migration
             $table->string('slug');
             $table->text('body');
             $table->string('author');
+            $table->timestamp('published_at');
             $table->timestamps();
         });
     }
