@@ -2,7 +2,7 @@
 
 namespace Lembarek\Blog\Models;
 
-class Blog extends Model
+class Post extends Model
 {
 
   protected $dates = ['published_at'];

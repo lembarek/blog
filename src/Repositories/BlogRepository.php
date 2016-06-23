@@ -2,14 +2,14 @@
 
 namespace Lembarek\Blog\Repositories;
 
-use Lembarek\Blog\Models\Blog;
+use Lembarek\Blog\Models\Post;
 
 class BlogRepository extends Repository implements BlogRepositoryInterface
 {
 
     protected $model;
 
-    public function __construct(Blog $model)
+    public function __construct(Post $model)
     {
         $this->model = $model;
     }
