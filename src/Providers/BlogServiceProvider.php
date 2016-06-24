@@ -3,6 +3,7 @@
 namespace Lembarek\Blog\Providers;
 
 use Lembarek\Core\Providers\ServiceProvider;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -13,9 +14,13 @@ class BlogServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Gate $gate)
     {
         $this->fullBoot('blog', __DIR__.'/../');
+
+        $gate->define('add-comment', function($user){
+            return true;
+        });
     }
 
     /**
@@ -30,5 +35,9 @@ class BlogServiceProvider extends ServiceProvider
              'Lembarek\Blog\Repositories\BlogRepository'
          );
 
+         $this->app->bind(
+             'Lembarek\Blog\Repositories\CommentRepositoryInterface',
+             'Lembarek\Blog\Repositories\CommentRepository'
+         );
     }
 }

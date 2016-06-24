@@ -23,6 +23,7 @@
           </div>
         </div>
       </div>
+      @include('blog::blog.partials.comments')
     </div>
 
 @stop
