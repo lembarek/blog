@@ -17,10 +17,6 @@ class BlogServiceProvider extends ServiceProvider
     public function boot(Gate $gate)
     {
         $this->fullBoot('blog', __DIR__.'/../');
-
-        $gate->define('add-comment', function($user){
-            return true;
-        });
     }
 
     /**
@@ -33,11 +29,6 @@ class BlogServiceProvider extends ServiceProvider
          $this->app->bind(
              'Lembarek\Blog\Repositories\BlogRepositoryInterface',
              'Lembarek\Blog\Repositories\BlogRepository'
-         );
-
-         $this->app->bind(
-             'Lembarek\Blog\Repositories\CommentRepositoryInterface',
-             'Lembarek\Blog\Repositories\CommentRepository'
          );
     }
 }

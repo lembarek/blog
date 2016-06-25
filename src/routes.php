@@ -11,10 +11,4 @@ Route::group(['as' => 'blog::', 'middleware' => ['web'], 'namespace' => 'Lembare
         'as' => 'show_post',
         'uses' => 'BlogsController@show',
         ]);
-
-    Route::post('/comment', [
-        'as' => 'add-comment',
-        'uses' => 'CommentsController@addComment',
-        ]);
-
 });

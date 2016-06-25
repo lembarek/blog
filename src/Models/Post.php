@@ -2,8 +2,6 @@
 
 namespace Lembarek\Blog\Models;
 
-use Lembarek\Blog\Models\Comment;
-
 class Post extends Model
 {
 
@@ -18,13 +16,4 @@ class Post extends Model
     }
   }
 
-  /**
-   * a post has many comment
-   *
-   * @return Comment
-   */
-  public function Comments()
-  {
-      return $this->hasMany(Comment::class);
-  }
 }
