@@ -22,7 +22,7 @@ class BlogRepository extends Repository implements BlogRepositoryInterface
      */
     public function getPopular($limit=20)
     {
-        return $this->model->latest()->limit($limit)->get();
+        return $this->model->latest()->publishedBeforeNow()->limit($limit)->get();
     }
 
 }

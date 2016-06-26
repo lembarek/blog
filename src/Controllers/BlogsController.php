@@ -49,7 +49,7 @@ class BlogsController extends Controller
      */
     public function PostsWithTag($tag_name)
     {
-        $posts = $this->tagRepo->findBy('name', $tag_name)->posts;
+        $posts = $this->tagRepo->findBy('name', $tag_name)->posts()->publishedBeforeNow()->get();
 
         return view('blog::blog.tags.posts', compact('posts'));
     }

@@ -9,7 +9,7 @@
     <div class="container">
       <div class="post-header">
         <h1 class="post-title">{{ $post['title'] }}</h1>
-        <h5>{{ $post->published_at->format('M jS Y g:ia') }}</h5>
+        <h5>{{ $post->published_at->diffForHumans()}}</h5>
         <p class="lead post-description">{{$post['description'] }} </p>
       </div>
 

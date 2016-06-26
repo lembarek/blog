@@ -19,4 +19,9 @@ class Post extends Model
       $this->attributes['slug'] = str_slug($value);
     }
   }
+
+  public  function scopePublishedBeforeNow($query)
+  {
+      return $query->where('published_at', '<', \Carbon\Carbon::now());
+  }
 }
