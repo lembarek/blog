@@ -23,6 +23,8 @@
           </div>
         </div>
       </div>
+
+      @include('blog::blog.partials.tags')
     </div>
 
 @stop

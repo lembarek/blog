@@ -2,8 +2,12 @@
 
 namespace Lembarek\Blog\Models;
 
+use Lembarek\Blog\Models\Tag;
+use Lembarek\Blog\Traits\Tagable;
+
 class Post extends Model
 {
+  use Tagable;
 
   protected $dates = ['published_at'];
 
@@ -15,5 +19,4 @@ class Post extends Model
       $this->attributes['slug'] = str_slug($value);
     }
   }
-
 }
