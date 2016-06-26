@@ -3,15 +3,19 @@
 namespace Lembarek\Blog\Controllers;
 
 use Lembarek\Blog\Repositories\BlogRepository;
+use Lembarek\Blog\Repositories\TagRepositoryInterface;
 
 class BlogsController extends Controller
 {
 
     protected $blogRepo;
 
-    public function __construct(BlogRepository $blogRepo)
+    protected $tagRepo;
+
+    public function __construct(BlogRepository $blogRepo, TagRepositoryInterface $tagRepo)
     {
         $this->blogRepo = $blogRepo;
+        $this->tagRepo = $tagRepo;
     }
 
     /**
@@ -35,6 +39,19 @@ class BlogsController extends Controller
     {
         $post =  $this->blogRepo->getBySlug($slug);
         return view('blog::blog.show',compact('post'));
+    }
+
+    /**
+     * show posts that have a tag
+     *
+     * @param  integer  $tag
+     * @return Response
+     */
+    public function PostsWithTag($tag_name)
+    {
+        $posts = $this->tagRepo->findBy('name', $tag_name)->posts;
+
+        return view('blog::blog.tags.posts', compact('posts'));
     }
 
 }

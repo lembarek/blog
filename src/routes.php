@@ -11,4 +11,12 @@ Route::group(['as' => 'blog::', 'middleware' => ['web'], 'namespace' => 'Lembare
         'as' => 'show_post',
         'uses' => 'BlogsController@show',
         ]);
+
+
+    Route::get('/blog/tag/{tag_name}', [
+        'as' => 'posts_with_tag',
+        'uses' => 'BlogsController@PostsWithTag',
+        ]);
+
+
 });

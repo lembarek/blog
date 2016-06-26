@@ -9,7 +9,6 @@ trait Tagable
     /**
     * get tags
     *
-    * @param  string  $
     * @return Tag
     */
     public function tags()
