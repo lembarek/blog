@@ -20,7 +20,7 @@ class CreateTagsTable extends Migration
             $table->string('page_image');
             $table->string('meta_description');
             $table->string('layout')->default('blog::tag.index');
-            $table->boolean('reverse_direction');
+            $table->boolean('direction');
             $table->timestamps();
         });
     }

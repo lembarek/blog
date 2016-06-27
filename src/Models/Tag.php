@@ -7,6 +7,8 @@ use Lembarek\Blog\Models\Post;
 class Tag extends Model
 {
 
+    protected $fillable = ['name', 'title', 'subtitle', 'page_image', 'meta_description', 'layout', 'direction'];
+
     /**
      * get posts
      *
