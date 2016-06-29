@@ -9,5 +9,5 @@ return [
     'page_image' => 'page image',
     'layout' => 'layout',
     'direction' => 'direction',
-    'mega_description' => 'mega description',
+    'meta_description' => 'meta description',
 ];
