@@ -19,7 +19,7 @@ class CreateTagsTable extends Migration
             $table->string('subtitle');
             $table->string('page_image');
             $table->string('meta_description');
-            $table->string('layout')->default('blog::tag.index');
+            $table->string('layout')->default('blog::posts.show');
             $table->boolean('direction');
             $table->timestamps();
         });
