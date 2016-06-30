@@ -36,5 +36,9 @@ class BlogServiceProvider extends ServiceProvider
              'Lembarek\Blog\Repositories\TagRepository'
          );
 
+         $this->app->bind(
+             'Lembarek\Blog\Repositories\PostRepositoryInterface',
+             'Lembarek\Blog\Repositories\PostRepository'
+         );
     }
 }
