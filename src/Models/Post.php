@@ -9,6 +9,8 @@ class Post extends Model
 {
   use Tagable;
 
+  protected $fillable = ['title', 'subtitle', 'body'];
+
   protected $dates = ['published_at'];
 
   public function setTitleAttribute($value)
