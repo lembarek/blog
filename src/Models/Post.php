@@ -9,7 +9,7 @@ class Post extends Model
 {
   use Tagable;
 
-  protected $fillable = ['title', 'subtitle', 'body'];
+  protected $fillable = ['title', 'description', 'body', 'published_at'];
 
   protected $dates = ['published_at'];
 
@@ -25,5 +25,11 @@ class Post extends Model
   public  function scopePublishedBeforeNow($query)
   {
       return $query->where('published_at', '<', \Carbon\Carbon::now());
+  }
+
+  public function save(array $options = [])
+  {
+      $this->author = auth()->user()->username;
+      parent::save($options);
   }
 }
