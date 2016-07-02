@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->string('author');
             $table->timestamp('published_at');
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

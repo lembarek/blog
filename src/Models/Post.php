@@ -9,7 +9,7 @@ class Post extends Model
 {
   use Tagable;
 
-  protected $fillable = ['title', 'description', 'body', 'published_at'];
+  protected $fillable = ['title', 'description', 'body', 'published_at', 'active'];
 
   protected $dates = ['published_at'];
 
@@ -27,9 +27,10 @@ class Post extends Model
       return $query->where('published_at', '<', \Carbon\Carbon::now());
   }
 
-  public function save(array $options = [])
+  public function setAuthorAttribute($author)
   {
-      $this->author = auth()->user()->username;
-      parent::save($options);
+      if(auth()->user())
+          return $this->attributes['author'] = auth()->user()->username;
+      $this->attributes['author'] = $author;
   }
 }
