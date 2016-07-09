@@ -4,6 +4,7 @@ namespace Lembarek\Blog\Models;
 
 use Lembarek\Blog\Models\Tag;
 use Lembarek\Blog\Traits\Tagable;
+use Lembarek\Core\Models\Category;
 
 class Post extends Model
 {
@@ -31,5 +32,15 @@ class Post extends Model
   {
       $this->attributes['author'] = auth()->user()->username;
       parent::save($options);
+  }
+
+  /**
+   * it get the catetory of this post
+   *
+   * @return Category
+   */
+  public function catogory()
+  {
+      return $this->belongsTo(Category::class);
   }
 }
