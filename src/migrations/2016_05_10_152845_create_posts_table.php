@@ -21,6 +21,10 @@ class CreatePostsTable extends Migration
             $table->string('author');
             $table->timestamp('published_at');
             $table->boolean('active')->default(1);
+
+            $table->integer('category_id')->defaults(0)->unsigned()->index();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
