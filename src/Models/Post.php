@@ -43,4 +43,16 @@ class Post extends Model
   {
       return $this->belongsTo(Category::class);
   }
+
+  /**
+   * add this post to category
+   *
+   * @param  Category $category
+   * @return void
+   */
+  public function assignCategory(Category $category)
+  {
+      $this->category_id = $category->id;
+      $this->save();
+  }
 }

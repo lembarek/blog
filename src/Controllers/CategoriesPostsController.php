@@ -20,7 +20,18 @@ class CategoriesPostsController extends Controller
      */
     public function index()
     {
-        $categories = $this->categoryRepo->where(['parent' => 0])->get();
-        return view('blog::categories.index', compact('categories'));
+        return view('blog::categories.index');
+    }
+
+    /**
+     * show posts connect to this category
+     *
+     * @param  Category  $category
+     * @return Response
+     */
+    public function posts($category)
+    {
+        $posts = $this->categoryRepo->findBy('name', $category)->posts();
+        return view('blog::categories.posts', compact('posts'));
     }
 }

@@ -22,6 +22,12 @@ Route::group([
         'uses' => 'CategoriesPostsController@index',
         ]);
 
+
+    Route::get('/categories/{category}/posts', [
+        'as' => 'categories.posts',
+        'uses' => 'CategoriesPostsController@posts',
+        ]);
+
     Route::get('/{slug}', [
         'as' => 'show_post',
         'uses' => 'BlogsController@show',
