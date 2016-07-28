@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use Lembarek\Blog\Models\Post;
-use Lembarek\Core\Models\Category;
+use Lembarek\Blog\Models\Category;
 
 class CategoryPostTableSeeder extends Seeder
 {

@@ -4,7 +4,7 @@ namespace Lembarek\Blog\Models;
 
 use Lembarek\Blog\Models\Tag;
 use Lembarek\Blog\Traits\Tagable;
-use Lembarek\Core\Models\Category;
+use Lembarek\Blog\Models\Category;
 
 class Post extends Model
 {

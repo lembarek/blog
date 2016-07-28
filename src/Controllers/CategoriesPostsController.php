@@ -2,7 +2,7 @@
 
 namespace Lembarek\Blog\Controllers;
 
-use Lembarek\Core\Repositories\CategoryRepositoryInterface;
+use Lembarek\Blog\Repositories\CategoryRepositoryInterface;
 
 class CategoriesPostsController extends Controller
 {
