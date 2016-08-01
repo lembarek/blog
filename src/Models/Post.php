@@ -39,20 +39,44 @@ class Post extends Model
    *
    * @return Category
    */
-  public function catogory()
+  public function categories()
   {
-      return $this->belongsTo(Category::class);
+      return $this->belongsToMany(Category::class);
   }
 
   /**
-   * add this post to category
+      * return all categories that this post
+      * do not belongs to.
    *
-   * @param  Category $category
-   * @return void
+   * @return Category
    */
-  public function assignCategory(Category $category)
+  public function CategoriesNotIn()
   {
-      $this->category_id = $category->id;
-      $this->save();
+      $category_ids = $this->categories->map(function($category){return $category->id;});
+      return Category::whereNotIn('id', $category_ids)->get();
   }
+
+    /**
+    * assign a category to a user
+    *
+    * @param  string  $category
+    * @return void
+    */
+    public function addToCategory($category)
+    {
+        $this->categories()->attach($category);
+    }
+
+    /**
+    * delete a category to a user
+    *
+    * @param  string  $category
+    * @return void
+    */
+    public function deleteFromCategory($category)
+    {
+        $this->categories()->detach($category);
+    }
+
+
 }
