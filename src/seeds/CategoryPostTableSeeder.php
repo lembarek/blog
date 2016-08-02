@@ -19,7 +19,7 @@ class CategoryPostTableSeeder extends Seeder
         foreach($categories as $category){
             $subPosts = $posts->take(3);
             foreach($subPosts as $post){
-                $post->assignCategory($category);
+                $post->addToCategory($category);
             }
         }
     }
