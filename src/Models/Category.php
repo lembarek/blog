@@ -35,6 +35,6 @@ class Category extends Model
      */
     public function posts()
     {
-        return Post::where('category_id', $this->id)->get();
+        return $this->hasMany(Post::class);
     }
 }

@@ -1,7 +1,7 @@
 <li
 id="category-{{$category->id}}"
 data-parent="category-{{$category->parent}}"
-class="{{$level == '0'? 'show': 'hide'}} category-level-{{$level++}}"
+class="category {{$level == '0'? 'show': 'hide'}} category-level-{{$level++}}"
 >
 
 <?php $childrenCategories = $allCategories->filter(function($c)use($category){return $c->parent == $category->id; }); ?>

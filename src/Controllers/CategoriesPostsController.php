@@ -31,7 +31,7 @@ class CategoriesPostsController extends Controller
      */
     public function posts($category)
     {
-        $posts = $this->categoryRepo->findBy('name', $category)->posts();
+        $posts = $this->categoryRepo->findBy('name', $category)->posts;
         return view('blog::categories.posts', compact('posts'));
     }
 }
