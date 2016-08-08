@@ -25,6 +25,12 @@
       </div>
 
       @include('blog::blog.partials.tags')
+
+      @include('blog::blog.partials.disqus')
     </div>
 
+@stop
+
+@section('script')
+<script id="dsq-count-scr" src="//tech4arabs.disqus.com/count.js" async></script>
 @stop
