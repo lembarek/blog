@@ -54,4 +54,14 @@ class BlogsController extends Controller
         return view('blog::blog.tags.posts', compact('posts'));
     }
 
+    /**
+     * show the page to search for posts
+     *
+     * @return Response
+     */
+    public function search()
+    {
+        return view('blog::blog.search');
+    }
+
 }

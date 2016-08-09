@@ -28,6 +28,13 @@ Route::group([
         'uses' => 'CategoriesPostsController@posts',
         ]);
 
+
+    Route::get('/search', [
+        'as' => 'search',
+        'uses' => 'BlogsController@search',
+        ]);
+
+
     Route::get('/{slug}', [
         'as' => 'show_post',
         'uses' => 'BlogsController@show',
