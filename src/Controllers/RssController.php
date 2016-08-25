@@ -1,0 +1,30 @@
+<?php
+
+namespace Lembarek\Blog\Controllers;
+
+use Lembarek\Blog\Services\Rss\RssFeed;
+
+class RssController extends Controller
+{
+
+
+    protected $rss;
+
+    public function __construct(RssFeed $rss)
+    {
+        $this->rss = $rss;
+    }
+
+    /**
+     * return posts
+     *
+     * @param  string  $
+     * @return Response
+     */
+    public function rss()
+    {
+        $rss = $this->rss->getRss();
+        return response($rss)
+               ->header('Content-type', 'application/rss+xml');
+    }
+}

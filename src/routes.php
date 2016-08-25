@@ -34,6 +34,12 @@ Route::group([
         'uses' => 'BlogsController@search',
         ]);
 
+    Route::get('/rss', [
+
+        'as' => 'rss',
+        'uses' => 'RssController@rss',
+        ]);
+
 
     Route::get('/{slug}', [
         'as' => 'show_post',
