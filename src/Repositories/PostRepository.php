@@ -29,16 +29,18 @@ class PostRepository extends Repository implements PostRepositoryInterface
     /**
      * get post for Rss
      *
+     * @param integer $limit
+     *
      * @return Post
      */
-    public function forRss()
+    public function getRssItems($limit=20)
     {
         $now = Carbon::now();
 
         return $this->model
             ->where('published_at', '<=', $now)
             ->orderBy('published_at', 'desc')
-            ->take(config('blog.rss_size', 20))
+            ->take(config('blog.rss_size', $limit))
             ->get();
     }
 

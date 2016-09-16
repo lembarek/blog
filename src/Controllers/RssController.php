@@ -2,7 +2,7 @@
 
 namespace Lembarek\Blog\Controllers;
 
-use Lembarek\Blog\Services\Rss\RssFeed;
+use Lembarek\Blog\Services\Rss\Rss;
 
 class RssController extends Controller
 {
@@ -10,7 +10,7 @@ class RssController extends Controller
 
     protected $rss;
 
-    public function __construct(RssFeed $rss)
+    public function __construct(Rss $rss)
     {
         $this->rss = $rss;
     }
