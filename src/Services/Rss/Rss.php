@@ -2,7 +2,7 @@
 
 namespace Lembarek\Blog\Services\Rss;
 
-use Illuminate\Cache\Repository;
+use Illuminate\Cache\Repository as Cache;
 use Carbon\Carbon;
 use Suin\RSSWriter\Feed;
 use Suin\RSSWriter\Channel;
@@ -17,7 +17,7 @@ class Rss extends CoreRss
     protected $repo;
 
 
-    public function __construct(Repository $cache, PostRepositoryInterface $postRepo)
+    public function __construct(Cache $cache, PostRepositoryInterface $postRepo)
     {
         $this->cache = $cache;
         $this->repo = $postRepo;
@@ -51,5 +51,13 @@ class Rss extends CoreRss
     public function getuid($post)
     {
         return route('blog::show_post', ['slug' => $post->slug]);
+    }
+
+    public function format($item, $it){
+        $item->title($it->title)
+        ->url($this->url($it))
+        ->pubDate($it->published_at->timestamp);
+
+        return $item;
     }
 }
