@@ -16,7 +16,6 @@ class Rss extends CoreRss
 
     protected $repo;
 
-
     public function __construct(Cache $cache, PostRepositoryInterface $postRepo)
     {
         $this->cache = $cache;
@@ -43,17 +42,17 @@ class Rss extends CoreRss
        return config('blog.author');
     }
 
-    public function  url($post)
+    protected function  url($post)
     {
         return route('blog::show_post', ['slug' => $post->slug]);
     }
 
-    public function getuid($post)
+    protected function getuid($post)
     {
         return route('blog::show_post', ['slug' => $post->slug]);
     }
 
-    public function format($item, $it){
+    protected function format($item, $it){
         $item->title($it->title)
         ->url($this->url($it))
         ->pubDate($it->published_at->timestamp);
