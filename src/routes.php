@@ -40,10 +40,16 @@ Route::group([
         'uses' => 'RssController@rss',
         ]);
 
+    Route::get('/recent', [
+        'as' => 'recent',
+        'uses' => 'BlogsController@recent',
+        ]);
 
     Route::get('/{slug}', [
         'as' => 'show_post',
         'uses' => 'BlogsController@show',
         ]);
+
+
 
 });

@@ -44,4 +44,15 @@ class PostRepository extends Repository implements PostRepositoryInterface
             ->get();
     }
 
+    /**
+     * get recents  posts
+     *
+     * @param  integer  $limit
+     * @return Post
+     */
+    public function recents($limit=20)
+    {
+        return $this->model->orderBy('published_at', 'DESC')->limit($limit)->get();
+    }
+
 }

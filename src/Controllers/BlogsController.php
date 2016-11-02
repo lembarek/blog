@@ -4,6 +4,7 @@ namespace Lembarek\Blog\Controllers;
 
 use Lembarek\Blog\Repositories\BlogRepository;
 use Lembarek\Blog\Repositories\TagRepositoryInterface;
+use Lembarek\Blog\Repositories\PostRepositoryInterface;
 
 class BlogsController extends Controller
 {
@@ -12,10 +13,13 @@ class BlogsController extends Controller
 
     protected $tagRepo;
 
-    public function __construct(BlogRepository $blogRepo, TagRepositoryInterface $tagRepo)
+    protected $postRepo;
+
+    public function __construct(BlogRepository $blogRepo, TagRepositoryInterface $tagRepo, PostRepositoryInterface $postRepo)
     {
         $this->blogRepo = $blogRepo;
         $this->tagRepo = $tagRepo;
+        $this->postRepo = $postRepo;
     }
 
     /**
@@ -62,6 +66,17 @@ class BlogsController extends Controller
     public function search()
     {
         return view('blog::blog.search');
+    }
+
+    /**
+     * show recent posts
+     *
+     * @return Response
+     */
+    public function recent()
+    {
+        $posts = $this->postRepo->recents();
+        return view('blog::blog.recent', compact('posts'));
     }
 
 }
