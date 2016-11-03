@@ -21,7 +21,9 @@ class Post extends Model
     if (! $this->exists) {
       $this->attributes['slug'] = str_slug($value);
     }
+    $this->attributes['popularity'] = time();
   }
+
 
   public  function scopePublishedBeforeNow($query)
   {
