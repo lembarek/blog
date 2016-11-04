@@ -26,16 +26,26 @@ class PopularityRepository extends Repository implements PopularityRepositoryInt
     public function add($post_id, $factor_id)
     {
         $post = $this->postRepo->find($post_id);
-        $post->popularity += $this->factors()[$factor_id]*time();
+        $post->popularity += $this->factor($factor_id)*time();
         $post->save();
         return $post->popularity;
     }
 
 
     /**
+     * get factor value
+     *
+     * @param  integer  $factor_id
+     * @return void
+     */
+    public function factor($factor_id)
+    {
+        return $this->factors()[$factor_id];
+    }
+
+    /**
      * it return the factors for popularity
      *
-     * @param  string  $
      * @return Array
      */
     public function factors()
@@ -43,7 +53,8 @@ class PopularityRepository extends Repository implements PopularityRepositoryInt
         return [
             1 => 1, //one view
             2 => 2, //facebook share
-            3 => 2, //twitter share
+            3 => 3, //twitter share
+            4 => 2, //google+ share
         ];
     }
 

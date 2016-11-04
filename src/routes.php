@@ -45,6 +45,11 @@ Route::group([
         'uses' => 'BlogsController@recent',
         ]);
 
+    Route::get('/popular', [
+        'as' => 'popular',
+        'uses' => 'BlogsController@popular',
+        ]);
+
     Route::get('/add_popularity/{post_id}/{factor_id}', [
         'as' => 'add_popularity',
         'uses' => 'PopularityController@add',

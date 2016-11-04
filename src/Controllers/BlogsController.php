@@ -76,7 +76,18 @@ class BlogsController extends Controller
     public function recent()
     {
         $posts = $this->postRepo->recents();
-        return view('blog::blog.recent', compact('posts'));
+        return view('blog::blog.posts', compact('posts'));
+    }
+
+    /**
+     * show popular posts
+     *
+     * @return Response
+     */
+    public function popular()
+    {
+        $posts = $this->postRepo->popular();
+        return view('blog::blog.posts', compact('posts'));
     }
 
 }

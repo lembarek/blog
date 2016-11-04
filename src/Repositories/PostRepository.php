@@ -21,9 +21,9 @@ class PostRepository extends Repository implements PostRepositoryInterface
      * @param  integer  $limit
      * @return Blog
      */
-    public function getPopular($limit=20)
+    public function popular($limit=20)
     {
-        return $this->model->latest()->whereActive(1)->publishedBeforeNow()->limit($limit)->get();
+        return $this->model->orderBy('popularity', 'DESC')->limit($limit)->get();
     }
 
     /**
