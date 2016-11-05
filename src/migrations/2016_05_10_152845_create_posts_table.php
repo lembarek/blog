@@ -21,7 +21,12 @@ class CreatePostsTable extends Migration
             $table->string('author');
             $table->timestamp('published_at');
             $table->boolean('active')->default(1);
+
             $table->integer('popularity');
+            $table->integer('views')->defaults(0);
+            $table->integer('facebook_shares')->defaults(0);
+            $table->integer('twitter_shares')->defaults(0);
+            $table->integer('google_plus_shares')->defaults(0);
 
             $table->integer('category_id')->nullable()->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

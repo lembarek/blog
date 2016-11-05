@@ -4,6 +4,7 @@ namespace Lembarek\Blog\Controllers;
 
 use Lembarek\Blog\Repositories\BlogRepository;
 use Lembarek\Blog\Repositories\TagRepositoryInterface;
+use Lembarek\Blog\Events\PostHasViewed;
 use Lembarek\Blog\Repositories\PostRepositoryInterface;
 
 class BlogsController extends Controller
@@ -42,6 +43,9 @@ class BlogsController extends Controller
     public function show($slug)
     {
         $post =  $this->blogRepo->getBySlug($slug);
+
+        event(new PostHasViewed($post));
+
         return view('blog::blog.show',compact('post'));
     }
 

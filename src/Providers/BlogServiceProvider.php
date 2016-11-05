@@ -4,6 +4,7 @@ namespace Lembarek\Blog\Providers;
 
 use Lembarek\Core\Providers\ServiceProvider;
 use Illuminate\Contracts\Auth\Access\Gate;
+use \Illuminate\Contracts\Events\Dispatcher as EventDispatcher;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -14,8 +15,9 @@ class BlogServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Gate $gate)
+    public function boot(Gate $gate, EventDispatcher $event)
     {
+        $event->listen('Lembarek\Blog\Events\PostHasViewed', 'Lembarek\Blog\Listeners\IncreasePostViews');
         $this->fullBoot('blog', __DIR__.'/../');
     }
 
