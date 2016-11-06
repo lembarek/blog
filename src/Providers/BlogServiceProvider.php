@@ -17,7 +17,8 @@ class BlogServiceProvider extends ServiceProvider
      */
     public function boot(Gate $gate, EventDispatcher $event)
     {
-        $event->listen('Lembarek\Blog\Events\PostHasViewed', 'Lembarek\Blog\Listeners\IncreasePostViews');
+        $event->subscribe('Lembarek\Blog\Listeners\IncreasePostPopularity');
+        $event->listen('Lembarek\Blog\Events\PostHasViewed', 'Lembarek\Blog\Listeners\IncreasePostPopularity');
         $this->fullBoot('blog', __DIR__.'/../');
     }
 
