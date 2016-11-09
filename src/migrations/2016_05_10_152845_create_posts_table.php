@@ -22,7 +22,6 @@ class CreatePostsTable extends Migration
             $table->timestamp('published_at');
             $table->boolean('active')->default(1);
 
-            $table->integer('popularity');
             $table->integer('views')->defaults(0);
             $table->integer('facebook_shares')->defaults(0);
             $table->integer('twitter_shares')->defaults(0);

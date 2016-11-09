@@ -21,7 +21,6 @@ class Post extends Model
     if (! $this->exists) {
       $this->attributes['slug'] = str_slug($value);
     }
-    $this->attributes['popularity'] = time();
   }
 
 
@@ -80,5 +79,26 @@ class Post extends Model
         $this->categories()->detach($category);
     }
 
+    /**
+     * return the popularity of post
+     *
+     * @return integer
+     */
+    public function popularity()
+    {
+        return $this->hasOne(Popularity::class);
+    }
+
+    /**
+     * assign popularity
+     *
+     * @param  integer  $popularity
+     * @return Model
+     */
+    public function assignPopularity($popularity=0)
+    {
+        $day = \Carbon\Carbon::now()->format('Y-m-d');
+        return $this->popularity()->create(['day' => $day, 'post_id' => $this->id, 'popularity' => $popularity]);
+    }
 
 }

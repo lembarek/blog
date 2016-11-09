@@ -2,18 +2,19 @@
 
 namespace Lembarek\Blog\Repositories;
 
+use Carbon\Carbon;
 use Lembarek\Blog\Repositories\PopularityRepositoryInterface;
-use Lembarek\Blog\Repositories\PostRepositoryInterface;
+use Lembarek\Blog\Models\Popularity;
 
 class PopularityRepository extends Repository implements PopularityRepositoryInterface
 {
 
 
-    protected $post;
+    protected $model;
 
-    public function __construct(PostRepositoryInterface $postRepo)
+    public function __construct(Popularity $model)
     {
-        $this->postRepo = $postRepo;
+        $this->model = $model;
     }
 
     /**
@@ -25,10 +26,18 @@ class PopularityRepository extends Repository implements PopularityRepositoryInt
      */
     public function add($post_id, $factor_id)
     {
-        $post = $this->postRepo->find($post_id);
-        $post->popularity += $this->factor($factor_id)*time();
-        $post->save();
-        return $post->popularity;
+        $day = Carbon::now()->format('Y-m-d');
+        $popularity  = $this->factor($factor_id)*time();
+
+        $post_popularity = $this->model->where('day', $day)->where('post_id' ,$post_id)->first();
+        if($post_popularity){
+            $post_popularity->popularity += $popularity;
+            $post_popularity->save();
+        }else{
+            $post_popularity = $this->model->create(['day' => $day, 'post_id' => $post_id, 'popularity' => $popularity]);
+        }
+
+        return $post_popularity->popularity;
     }
 
 

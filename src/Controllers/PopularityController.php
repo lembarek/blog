@@ -6,7 +6,6 @@ use Lembarek\Blog\Repositories\PopularityRepositoryInterface;
 class PopularityController extends Controller
 {
 
-
     protected $popularityRepo;
 
     public function __construct(PopularityRepositoryInterface $popularityRepo)
@@ -26,4 +25,5 @@ class PopularityController extends Controller
         $new_popularity = $this->popularityRepo->add($post_id, $factor_id);
         return $new_popularity;
     }
+
 }
