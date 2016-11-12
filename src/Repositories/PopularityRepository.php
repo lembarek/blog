@@ -40,7 +40,6 @@ class PopularityRepository extends Repository implements PopularityRepositoryInt
         return $post_popularity->popularity;
     }
 
-
     /**
      * get factor value
      *

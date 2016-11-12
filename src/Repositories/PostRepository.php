@@ -3,6 +3,7 @@
 namespace Lembarek\Blog\Repositories;
 
 use Carbon\Carbon;
+use DB;
 use Lembarek\Blog\Models\Post;
 
 class PostRepository extends Repository implements PostRepositoryInterface
@@ -23,7 +24,11 @@ class PostRepository extends Repository implements PostRepositoryInterface
      */
     public function popular($limit=20)
     {
-        return $this->model->orderBy('popularity', 'DESC')->limit($limit)->get();
+        return DB::table('posts')
+            ->join('popularity', 'posts.id', '=', 'popularity.post_id')
+            ->orderBy('popularity.popularity', 'DESC')
+            ->limit($limit)
+            ->get();
     }
 
     /**
@@ -53,6 +58,23 @@ class PostRepository extends Repository implements PostRepositoryInterface
     public function recents($limit=20)
     {
         return $this->model->orderBy('published_at', 'DESC')->limit($limit)->get();
+    }
+
+    /**
+     * get trending posts
+     *
+     * @param  integer  $limit
+     * @return Collection
+     */
+    public function trending($limit=20)
+    {
+        $yesterday = Carbon::now()->subDay()->format('Y-m-d');
+        return DB::table('posts')
+            ->join('popularity', 'posts.id', 'popularity.post_id')
+            ->orderBy('popularity.popularity', 'DESC')
+            ->limit($limit)
+            ->where('day', '>', $yesterday)
+            ->get();
     }
 
 }

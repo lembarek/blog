@@ -94,4 +94,14 @@ class BlogsController extends Controller
         return view('blog::blog.posts', compact('posts'));
     }
 
+    /**
+     * show the trending posts
+     *
+     * @return Response
+     */
+    public function trending()
+    {
+        $posts = $this->postRepo->trending();
+        return view('blog::blog.posts', compact('posts'));
+    }
 }

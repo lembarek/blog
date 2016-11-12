@@ -100,5 +100,4 @@ class Post extends Model
         $day = \Carbon\Carbon::now()->format('Y-m-d');
         return $this->popularity()->create(['day' => $day, 'post_id' => $this->id, 'popularity' => $popularity]);
     }
-
 }

@@ -3,8 +3,10 @@
 namespace Lembarek\Blog\Listeners;
 
 use Lembarek\Blog\Events\PostHasViewed;
+use Lembarek\Blog\Models\Popularity;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Lembarek\Blog\Repositories\PopularityRepositoryInterface;
 
 class IncreasePostPopularity
 {
@@ -13,8 +15,11 @@ class IncreasePostPopularity
     *
     * @return void
     */
-    public function __construct()
+    protected $popularityRepo;
+
+    public function __construct(PopularityRepositoryInterface $popularityRepo)
     {
+        $this->popularityRepo = $popularityRepo;
     }
 
     /**
@@ -36,9 +41,9 @@ class IncreasePostPopularity
      */
     public function byView(PostHasViewed $event)
     {
-        $event->post->popularity += time();
-        $event->post->save();
-        return $event->post->popularity;
+        $this->popularityRepo->add($event->post->id, 1);
+
+        return true;
     }
 
     /**

@@ -19,4 +19,14 @@ class Popularity extends Model
         return $this->belongsTo(Post::class);
     }
 
+    /**
+     * get the day format
+     *
+     * @return string
+     */
+    public function day()
+    {
+        return  \Carbon\Carbon::now()->format('Y-m-d');
+    }
+
 }
