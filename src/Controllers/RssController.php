@@ -23,7 +23,7 @@ class RssController extends Controller
      */
     public function rss()
     {
-        $rss = $this->rss->getRss();
+        $rss = $this->rss->getRssFeed();
         return response($rss)
                ->header('Content-type', 'application/rss+xml');
     }
