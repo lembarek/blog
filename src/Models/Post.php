@@ -100,4 +100,25 @@ class Post extends Model
         $day = \Carbon\Carbon::now()->format('Y-m-d');
         return $this->popularity()->create(['day' => $day, 'post_id' => $this->id, 'popularity' => $popularity]);
     }
+
+    /**
+     * get the relatives posts of post
+     *
+     * @return Posts
+     */
+    public function relateds()
+    {
+        return $this->belongsToMany(Post::class, 'post_related', 'post_id', 'related');
+    }
+
+    /**
+     * add relative
+     *
+     * @param  Post  $post
+     * @return void
+     */
+    public function addRelated($post)
+    {
+        return $this->relateds()->attach($post);
+    }
 }
