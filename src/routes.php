@@ -60,10 +60,14 @@ Route::group([
         'uses' => 'PopularityController@add',
         ]);
 
+    Route::get('/get_posts/{post}', [
+        'as' => 'get_posts',
+        'uses' => 'PostsController@get_posts',
+        ]);
+
     Route::get('/{slug}', [
         'as' => 'show_post',
         'uses' => 'BlogsController@show',
         ]);
-
 
 });

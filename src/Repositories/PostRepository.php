@@ -77,4 +77,15 @@ class PostRepository extends Repository implements PostRepositoryInterface
             ->get();
     }
 
+    /**
+     * get simular posts
+     *
+     * @param  string  $post
+     * @return Post
+     */
+    public function get_simular_posts($post, $limit=20)
+    {
+        return $this->model->where('title', 'like', "%$post%")->limit($limit)->get();
+    }
+
 }
