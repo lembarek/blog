@@ -27,7 +27,9 @@ class PopularityRepository extends Repository implements PopularityRepositoryInt
     public function add($post_id, $factor_id)
     {
         $day = Carbon::now()->format('Y-m-d');
-        $popularity  = $this->factor($factor_id)*time();
+        $time = Carbon::now()->subYears(47)->getTimestamp();
+
+        $popularity  = $this->factor($factor_id)*$time;
 
         $post_popularity = $this->model->where('day', $day)->where('post_id' ,$post_id)->first();
         if($post_popularity){
