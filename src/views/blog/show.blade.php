@@ -26,6 +26,8 @@
 
       @include('blog::blog.partials.tags')
 
+      @include('blog::partials.facebook_button_share')
+
       @include('blog::blog.partials.disqus')
     </div>
 
